@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+    <style type="text/css">
+
+      html { height: 100% }
+
+      body { height: 100%; margin: 0; padding: 0 }
+
+      #map_canvas { height: 100% }
+
+    </style>
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCjtocGJksz3zKwJkOFpvijiXVm7tSzqlA&sensor=true"></script>
+
+    <script type="text/javascript">
+
+function initialize() {
+
+/* 地図のオプションを指定 */
+var myOptions = {
+
+/* 地図拡大率 */
+zoom: 12,
+
+/* 地図中心値 */
+center: new google.maps.LatLng(33.53910, 133.56010),
+
+/*
+地図の種類を選択
+ROADMAP は、2D地図。
+SATELLITE は、航空写真。
+HYBRID は、航空写真と地形。
+TERRAIN は、地形。
+*/
+
+mapTypeId: google.maps.MapTypeId.ROADMAP
+};
+
+/* 地図を表示 */
+var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+
+
+/* 地図情報の配列です */
+var markers = [
+    ['高知県立美術館',33.56104,133.57295],
+    ['牧野植物園',33.54661,133.57790],
+    ['高知城',33.56067,133.53147],
+    ['桂浜',33.497145,133.57480],
+    ['高知市文化プラザかるぽーと',33.55826,133.54725]
+    ];
+
+/* for文で markers.length の配列要素分、繰り返し処理を行います。*/
+for (var i = 0; i < markers.length; i++) {
+
+/* 配列markers[i][0]を変数nameに格納 */
+var name = markers[i][0];
+
+/* 配列markers[i][1]とmarkers[i][2]を変数latlng に格納 */
+var latlng = new google.maps.LatLng(markers[i][1],markers[i][2]);
+
+/* 関数createMarkerに引数を指定します */
+createMarker(latlng,name,map)
+}
+}
+
+/* 引数で渡された値を変数に代入し｛｝内の処理を実行 */
+function createMarker(latlng,name,map){
+
+/* InfoWindowクラスのオブジェクトを作成 */
+var infoWindow = new google.maps.InfoWindow();
+
+/* 指定したオプションを使用してマーカーを作成 */
+var marker = new google.maps.Marker({position: latlng,map: map});
+
+/* addListener を使ってイベントリスナを追加 */
+/* 地図上のmarkerがクリックされると｛｝内の処理を実行。*/
+google.maps.event.addListener(marker, 'click', function() {
+
+/* InfoWindowOptionsオブジェクトを指定します。*/
+infoWindow.setContent(name);
+
+/* マーカーに情報ウィンドウを表示 */
+infoWindow.open(map,marker);
+});
+}
+/* ページ読込時に地図を表示 */
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+
+  </head>
+
+  <body>
+
+    <div id="map_canvas" style="width:100%; height:100%"></div>
+
+  </body>
+
+</html>
