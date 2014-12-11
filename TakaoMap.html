@@ -22,6 +22,8 @@
 
     <script type="text/javascript">
 
+
+
 var currentWindow = null;
 function initialize() {
 
@@ -29,10 +31,10 @@ function initialize() {
 var myOptions = {
 
 /* 地図拡大率 */
-zoom: 12,
+zoom: 14,
 
 /* 地図中心値 */
-center: new google.maps.LatLng(35.6251209, 35.6251209),
+center: new google.maps.LatLng(35.6251209, 139.2436593),
 
 /*
 地図の種類を選択
@@ -49,14 +51,26 @@ mapTypeId: google.maps.MapTypeId.ROADMAP
 var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
 
 
-/* 地図情報の配列です */
+
+
+/* 地図情報の配列です（とろろ蕎麦） */
 var markers = [
-    ['高知県立美術館',33.56104,133.57295],
-    ['牧野植物園',33.54661,133.57790],
-    ['高知城',33.56067,133.53147],
-    ['桂浜',33.497145,133.57480],
-    ['高知市文化プラザかるぽーと',33.55826,133.54723]
+    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042612">橋詰亭</a></p>',35.631158,139.269092],
+    ['むぎとろ つたや',35.630925,139.269028],
+    ['川魚料理 にいの',35.631527,139.269287],
+    ['高尾山 とろろそば・とろろめしの日光屋',35.63198,139.270506],
+    ['高尾山',35.6251209, 139.2436593]
     ];
+
+
+
+
+
+
+
+
+
+
 
 /* for文で markers.length の配列要素分、繰り返し処理を行います。*/
 for (var i = 0; i < markers.length; i++) {
@@ -77,6 +91,9 @@ function createMarker(latlng,name,map){
 
 /* InfoWindowクラスのオブジェクトを作成 */
 var infoWindow = new google.maps.InfoWindow();
+size: new google.maps.Size(200,111)
+
+
 
 /* 指定したオプションを使用してマーカーを作成 */
 var marker = new google.maps.Marker({position: latlng,map: map});
@@ -84,12 +101,18 @@ var marker = new google.maps.Marker({position: latlng,map: map});
 /* addListener を使ってイベントリスナを追加 */
 /* 地図上のmarkerがクリックされると｛｝内の処理を実行。*/
 google.maps.event.addListener(marker, 'click', function() {
+if(currentWindow) {
+   currentWindow.close();
 
+   }
 /* InfoWindowOptionsオブジェクトを指定します。*/
 infoWindow.setContent(name);
 
+
+
 /* マーカーに情報ウィンドウを表示 */
 infoWindow.open(map,marker);
+currentWindow = infoWindow;
 });
 }
 /* ページ読込時に地図を表示 */
