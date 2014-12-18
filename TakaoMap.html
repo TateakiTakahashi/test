@@ -50,47 +50,104 @@ mapTypeId: google.maps.MapTypeId.ROADMAP
 /* 地図を表示 */
 var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
 
+
+
+
 /* 地図情報の配列です（全部） */
 var markers = [
     ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042612">橋詰亭</a></p>',35.631158,139.269092],
 
-    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042681/">むぎとろ つたや</a></p>',35.630925,139.269028],
+    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042681/">むぎとろつたや</a></p>',35.630925,139.269028],
 
-    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042682/">川魚料理 にいの</a></p>',35.631527,139.269287],
+    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042682/">川魚料理にいの</a></p>',35.631527,139.269287],
 
-    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042092/">高尾山 とろろそば・とろろめしの日光屋</a></p>',35.63198,139.270506],
+    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042092/">高尾山とろろそば・とろろめしの日光屋</a></p>',35.63198,139.270506],
 
-    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042660/dtlphotolst/1/smp2/">御膳所 琵琶家 別館 清流亭</a></p>',35.631141,139.269428],
+    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042660/dtlphotolst/1/smp2/">御膳所琵琶家別館清流亭</a></p>',35.631141,139.269428],
 
-    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042674/">御膳所 琵琶家 本館</a></p>',35.631141,139.269428],
-
-
-
-    /*とろろ蕎麦なし*/
-
-    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13098826/">高尾山ふもとや</a></p>',35.63213,139.269845],
-
-    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042664/">香住 山麓店</a></p>',35.632245,139.26994],
-
-    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13126505/">つぼ萬</a></p>',35.631258,139.268395],
+    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042674/">御膳所琵琶家本館</a></p>',35.631141,139.269428],
 
 
     /* お店の項目を追加 高橋　*/
 
     ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042680/">高松屋</a></p>',35.630711,139.265137],
 
-    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042663/">紅葉屋本店</a></p>',35.63118,139.26757],
+	['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042663/">紅葉屋本店</a></p>',35.63118,139.26757],
 
     ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13016415/">高橋家</a></p>',35.631458,139.267923],
 
-    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13024652/">栄茶屋 本店</a></p>',35.631066,139.268287],
+    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13024652/">栄茶屋本店</a></p>',35.631066,139.268287],
 
-    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13123542/">そば工房　髙栄堂</a></p>',35.631422,139.268451],
+    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13123542/">そば工房髙栄堂</a></p>',35.631422,139.268451],
 
-    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042611/">飯島屋</a></p>',35.631211,139.268714]
+    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042611/">飯島屋</a></p>',35.631211,139.268714],
+
+    /*お店の項目を追加　伊織
+     ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042613/">山門前もみじや</a></p>',35.627431,139.250311],
+
+
+        /*とろろ蕎麦なし*/
+
+	['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13098826/">高尾山ふもとや</a></p>',35.63213,139.269845],
+
+	['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042664/">香住山麓店</a></p>',35.632245,139.26994],
+
+    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13126505/">つぼ萬</a></p>',35.631258,139.268395],
+
+    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13126499/">高尾山キッチンむささび</a></p>',35.630687,139.255896],
+
+    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13159869/">高尾山薬王院　精進料理</a></p>',35.627431,139.250311],
+
+    ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13010283/">権現茶屋</a></p>',35.627431,139.250311],
+
+
+
+
+	          /*おみやげ*/
+
+
+	     ['<p>おみやげ処やまゆり</p>',35.6315215,139.2668172],
+
+	     ['<p>さる園・野草園</p>',35.629925,139.254938],
+
+	      ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042691/">有喜堂</a></p>',35.631404,139.269943],
+
+		  ['<p>手焼きせんべい　くし田</p>',35.631244,139.268483],
+
+		  ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042692/">千代乃家　（団子）</a></p>',35.631211,139.268714],
+
+		  ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13153415/">有喜堂本店 工場店　（まんじゅう）</a></p>',35.631427,139.269939],
+
+		  ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13111799/">滝美屋　和菓子</a></p>',35.63118,139.26757],
+
+		  ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042688/">甘味 有喜堂</a></p>',35.631258,139.268395],
+
+		  ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13149870/">高尾山元気堂</a></p>',35.631066,139.268287],
+
+		  ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13133739/">高尾山薬王院（和菓子）</a></p>',35.626196,139.249785],
+
+		  ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13042628/">香住（売店）</a></p>',35.630711,139.265137],
+
+		 ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13171936/">高尾山　天狗屋</a></p>',35.631108,139.25611],
+
+		  ['<p><a href="http://tabelog.com/tokyo/A1329/A132905/13111633/">喫茶小坊　一福</a></p>',35.626196,139.249785],
+
+　　　　 ['<p><a href="http://www.keio-retail.com/takaosanguchi.html">K-shop</a></p>',35.632153,139.269858]
+
+
+
+
 
 
     ];
+
+
+
+
+
+
+
+
 
 
 
@@ -108,12 +165,21 @@ createMarker(latlng,name,map)
 }
 }
 
-/* 引数で渡された値を変数に代入し｛｝内の処理を実行 */
-function createMarker(latlng,name,map){
 
-/* InfoWindowクラスのオブジェクトを作成 */
-var infoWindow = new google.maps.InfoWindow();
-size: new google.maps.Size(200,111)
+	/* 引数で渡された値を変数に代入し｛｝内の処理を実行 */
+
+	function createMarker(latlng,name,map){
+/* ここでなんかサイズを変更 (追加高橋) */
+	var contentString =  '<div style="width : 500px;height : 500px;">' //サイズ指定
+
+	/* InfoWindowクラスのオブジェクトを作成 */
+
+	var infoWindow = new google.maps.InfoWindow({
+	/* ここにさっき指定したインフォウィンドウのサイズを突っ込む。 */
+	content: contentString
+
+	});
+
 
 
 
